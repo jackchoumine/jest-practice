@@ -2,7 +2,7 @@
  * @Description: 
  * @Date: 2020-08-16 12:54:57 +0800
  * @Author: JackChouMine
- * @LastEditTime: 2020-08-16 13:53:46 +0800
+ * @LastEditTime: 2020-08-16 14:14:15 +0800
  * @LastEditors: JackChouMine
 -->
 # Jest 前端测试学习
@@ -66,4 +66,51 @@ test('1 + 3 = 4', () => {
 - toBeCloseTo 浮点数近似相等，计算机精度有限，无法判断浮点数精确相等
 
 `NaN`、`Infinity` 等特殊数字，有匹配器吗？
+
+
+### 字符串
+
+`toMatch` 匹配器可用正则来检测字符串包含的字符。
+```js
+test('there is no I in team', () => {
+  expect('team').not.toMatch(/I/)
+})
+
+test('but there is a "stop" in Christoph', () => {
+  expect('Christoph').toMatch(/stop/)
+})
+```
+
+`toContain` 用来检测数组、字符串和可迭代对象是否包含某一项。
+
+```js
+test('the shopping list has beer on it', () => {
+  expect([1, 2, 3]).toContain(1)
+  expect([1, 2, 3]).not.toContain(4)
+  expect(new Set(['beer'])).toContain('beer')
+  expect('JackChou').toContain('Jack')
+})
+```
+
+### 错误匹配器
+
+测试函数是否抛出错误。
+`toThrow`，可传递一个错误信息和错误。
+
+```js
+function compileAndroidCode () {
+  throw new Error('you are using the wrong JDK')
+}
+
+test('compiling android goes as expected', () => {
+  expect(compileAndroidCode).toThrow()
+  expect(compileAndroidCode).toThrow(Error)
+
+  // You can also use the exact error message or a regexp
+  expect(compileAndroidCode).toThrow('you are using the wrong JDK')
+  expect(compileAndroidCode).toThrow(/JDK/)
+})
+```
+[完整的匹配器](https://jestjs.io/docs/zh-Hans/expect#tobenan)，社区也提供了更多的匹配器。
+
 
