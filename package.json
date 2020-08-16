@@ -1,0 +1,19 @@
+{
+  "name": "jest-practice",
+  "version": "1.0.0",
+  "description": "Jest 前端测试框架学习",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint test src --fix",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^26.4.0",
+    "eslint": "^7.6.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "babel-eslint": "^10.1.0"
+  }
+}
