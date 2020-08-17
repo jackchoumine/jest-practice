@@ -3,9 +3,13 @@
  * @Description:
  * @Date: 2020-08-16 12:49:14 +0800
  * @Author: JackChouMine
- * @LastEditTime: 2020-08-16 14:12:47 +0800
+ * @LastEditTime: 2020-08-17 22:13:54 +0800
  * @LastEditors: JackChouMine
  */
+const { sum } = require('../src/index')
+test('sum', () => {
+  expect(sum(10, 20)).toBe(30)
+})
 test('1 + 3 = 4', () => {
   expect(1 + 3).toBe(4)
 })

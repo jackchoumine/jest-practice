@@ -2,7 +2,7 @@
  * @Description: 
  * @Date: 2020-08-16 12:54:57 +0800
  * @Author: JackChouMine
- * @LastEditTime: 2020-08-16 14:14:15 +0800
+ * @LastEditTime: 2020-08-17 22:19:06 +0800
  * @LastEditors: JackChouMine
 -->
 # Jest 前端测试学习
@@ -113,4 +113,44 @@ test('compiling android goes as expected', () => {
 ```
 [完整的匹配器](https://jestjs.io/docs/zh-Hans/expect#tobenan)，社区也提供了更多的匹配器。
 
+## 代码覆盖率
 
+单元测试：对系统中一个模块进行检查。可能是一个函数、一个组件等。
+集成测试：在单元测试基础上，把所有模块集成成系统，再进行检查，又叫联合测试和组装测试。
+
+编写 Jest 配置文件：
+```bash
+jest --init
+```
+配置覆盖率执行脚本：
+```bash
+"coverage":"jest --coverage"
+```
+
+引入测试代码：
+```js
+const { sum } = require('../src/index')
+test('sum', () => {
+  expect(sum(10, 20)).toBe(30)
+})
+```
+执行覆盖率脚本，得到一个覆盖率报告：
+```bash
+----------|---------|----------|---------|---------|-------------------
+File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+----------|---------|----------|---------|---------|-------------------
+All files |     100 |      100 |     100 |     100 |                  
+ index.js |     100 |      100 |     100 |     100 |                  
+----------|---------|----------|---------|---------|-------------------
+Test Suites: 1 passed, 1 total
+Tests:       10 passed, 10 total
+Snapshots:   0 total
+Time:        2.323 s, estimated 3 s
+Ran all test suites.
+```
+同时生成`coverage`目录，里面有一个覆盖率报告，打开`index.html`即可查看。
+可在`jest.config.js` 配置文件里修改覆盖率报告的目录：
+
+```bash
+coverageDirectory: 'coverage',
+```

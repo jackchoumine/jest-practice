@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint test src --fix",
-    "test": "jest"
+    "test": "jest",
+    "coverage":"jest --coverage"
   },
   "keywords": [],
   "author": "",
